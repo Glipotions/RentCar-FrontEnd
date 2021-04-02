@@ -1,4 +1,4 @@
-export interface CarImage{
+export class CarImage{
     id:number;
     carId:number;
     imagePath:string;

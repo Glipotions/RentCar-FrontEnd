@@ -1,17 +1,48 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-success" role="status">
+
+<h2 class="text-center">Araba Listesi</h2>
+<div *ngIf="dataLoaded == false" class="d-flex justify-content-center">
+  <div class="spinner-border text-success" role="status">
     <span class="visually-hidden">Loading...</span>
+  </div>
 </div>
-<table *ngIf="dataLoaded!=false" class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Marka Adı</th>
-        </tr>
 
-    </thead>
 
-    <tr *ngFor= "let car of cars">
-        <td>{{car.id}}</td>
-        <td>{{car.carName}}</td>
-    </tr>
-</table>
+<div class="rounded-0 mt-4">
+  <app-car-filter></app-car-filter>
+  <div class="row px-2">
+    <div *ngFor="let car of cars" class="card mx-2" style="width: 14rem">
+      <img
+        src="https://localhost:44383/{{car.imagePath}}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ car.description }}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Marka: {{ car.brandName }}</li>
+        <li class="list-group-item">Model: {{ car.carName }}</li>
+        <li class="list-group-item">Renk: {{ car.colorName }}</li>
+        <li class="list-group-item">Model Yılı: {{ car.modelYear }}</li>
+        <li class="list-group-item">Fiyat: {{ car.dailyPrice }} TL</li>
+      </ul>
+      <div class="card-body">
+        <button
+          routerLink="/cars/car-detail/{{ car.id }}"
+          type="button"
+          class="btn btn-light"
+        >
+          Detaylar
+        </button>
+        <button
+          routerLink="/car/rental/{{car.id}}"
+          type="button"
+          class="btn btn-light"
+        >
+          Kirala
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

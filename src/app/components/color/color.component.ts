@@ -5,25 +5,52 @@ import { ColorService } from 'src/app/service/color.service';
 @Component({
   selector: 'app-color',
   templateUrl: './color.component.html',
-  styleUrls: ['./color.component.css']
+  styleUrls: ['./color.component.css'],
 })
 export class ColorComponent implements OnInit {
-  colors:Color[] = [];
-  dataLoaded=false;
-  constructor(private colorService:ColorService) { {
-    
-  }}
-
+  colors: Color[] = [];
+  dataLoaded = false;
+  currentColor : Color = {id:-1, colorName:""};
+  filterColorText = "";
+  constructor(private colorService: ColorService) {}
 
   ngOnInit(): void {
     this.getColors();
   }
+
   getColors() {
-    this.colorService.getColors().subscribe(response=>{
-      this.colors=response.data
+    this.colorService.getColors().subscribe((response) => {
+      this.colors = response.data;
       this.dataLoaded=true;
-    })
+    });
+  }
+  setCurrentColor(color: Color) {
+    this.currentColor = color;
+  }
 
+  getCurrentColorClass(color: Color) {
+    if (this.currentColor == color) {
+      return 'list-group-item active';
+    } else {
+      return 'list-group-item';
+    }
+  }
 
-}
+  getAllColorClass() {
+    let defaultColor:Color = {id:-1, colorName:""};
+    if (this.currentColor.id == defaultColor.id) {
+      return "list-group-item active cursorPointer";
+    } else {
+      return "list-group-item cursorPointer";
+    }
+  }
+
+  removeCurrentColor(){
+    this.filterColorText = "";
+    this.currentColor = {id:-1, colorName:""};
+  }
+
+  setAllColor() {
+    return (this.currentColor = { id: 0, colorName: ' ' });
+  }
 }
