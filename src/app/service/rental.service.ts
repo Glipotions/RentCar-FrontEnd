@@ -10,33 +10,38 @@ import { ResponseModel } from '../models/responseModel';
 })
 export class RentalService {
 
-  apiUrl="https://localhost:44383/api/";
+  apiUrl="https://localhost:44383/api/Rentals";
+  rentingCar: Rental;
   constructor(private httpClient:HttpClient) {}
 
-  getRentals():Observable<ListResponseModel<RentalDetail>>{
-    let newPath=this.apiUrl+"Rentals/getrentaldetails"
-    return this.httpClient.get<ListResponseModel<RentalDetail>>(newPath);
-}
 
-// Addrental(rental:RentalDetail):Observable<ResponseModel>{
-//   let newPath = this.apiUrl+"Rentals/add";
-//     return this.httpClient.post<ResponseModel>(newPath,rental);
-// }
-getRentalsByCarId(carId:number):Observable<ListResponseModel<RentalDetail>>
-{
-  let newPath=this.apiUrl+"Rentals/getallbycarid?id="+carId;
-  return this.httpClient.get<ListResponseModel<RentalDetail>>(newPath);
-}
+  getRentals(): Observable<ListResponseModel<RentalDetail>> {
+    return this.httpClient.get<ListResponseModel<RentalDetail>>(this.apiUrl);
+ }
 
-payRental(rental: Rental, amount: number) {
-  let newPath = this.apiUrl + 'Rentals/add';
-  return this.httpClient.post<ResponseModel>(newPath,{payment:{amount:amount},rental:{rental}});
-}
+ getRentalsByCarId(carId: number): Observable<ListResponseModel<Rental>> {
+    let newPath = this.apiUrl + '/get-rental-by-carid?carId=' + carId;
+    return this.httpClient.get<ListResponseModel<Rental>>(newPath);
+ }
 
-addRental(rental:Rental){
-  let newPath = this.apiUrl + "Rentals/add"
-  this.httpClient.post(newPath,rental).subscribe()
-}
-  
+ setRentingCar(rental: Rental) {
+    this.rentingCar = rental;
+ }
+
+ getRentingCar() {
+    return this.rentingCar;
+ }
+
+ removeRentingCar() {
+    this.rentingCar = null
+ }
+
+ add(rental: Rental): Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(this.apiUrl, rental);
+ }
+
+
+
+
 }
 

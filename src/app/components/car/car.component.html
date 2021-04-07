@@ -5,10 +5,16 @@
     <span class="visually-hidden">Loading...</span>
   </div>
 </div>
+<div class="row">
+<div class="col-md-3">
+  <app-brand></app-brand>
+  <app-color></app-color>
+</div>
 
-
+<div class="col-md-9">
 <div class="rounded-0 mt-4">
   <app-car-filter></app-car-filter>
+
   <div class="row px-2">
     <div *ngFor="let car of cars" class="card mx-2" style="width: 14rem">
       <img
@@ -35,7 +41,7 @@
           Detaylar
         </button>
         <button
-          routerLink="/car/rental/{{car.id}}"
+          routerLink="/cars/rental/{{car.id}}"
           type="button"
           class="btn btn-light"
         >
@@ -45,4 +51,5 @@
     </div>
   </div>
 </div>
-
+</div>
+</div>

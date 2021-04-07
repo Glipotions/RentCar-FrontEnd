@@ -1,0 +1,38 @@
+<div class="card rounded-0 mt-4">
+
+    <app-car-image></app-car-image>
+        <div style="text-align:center"  aria-current="true" *ngIf="carDetails"><h4>
+            {{carDetails.brandName}} -- {{carDetails.description}}
+        </h4></div>
+    <table class="table">
+       
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Marka</th>
+                <th>Model</th>
+                <th>Renk</th>
+                <th>Model Yılı</th>
+                <th>Fiyat</th>
+                <th>Açıklama</th>
+                
+                     
+            </tr>
+        </thead>
+        <tr *ngIf="carDetails" >
+            <td>{{carDetails.id}} </td>
+            <td>{{carDetails.brandName}}</td>
+            <td>{{carDetails.carName}}</td>
+            <td>{{carDetails.colorName}}</td>
+            <td>{{carDetails.modelYear}}</td>
+            <td>{{carDetails.dailyPrice}}</td>
+            <td>{{carDetails.description}}</td>
+                        
+            
+        </tr>
+    </table>
+
+    <app-car-rent> </app-car-rent>
+    <!-- <button routerLink="/pay"  type="button" class="btn btn-outline-success">Kirala</button> -->
+ </div>
+

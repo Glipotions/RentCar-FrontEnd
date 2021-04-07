@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NaviComponent implements OnInit {
 
+  title:string = 'Glipotions Rent';
   constructor() { }
 
   ngOnInit(): void {

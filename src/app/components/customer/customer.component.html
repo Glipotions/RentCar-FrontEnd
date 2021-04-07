@@ -1,19 +1,23 @@
-<div class="rounded-0 mt-4">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Ad</th>
-          <th>Soyad</th>
-          <th>Şirket Adı</th>
-        </tr>
-      </thead>
-      <tr *ngFor="let customer of customers">
-        <td>{{ customer.id }}</td>
-        <td>{{ customer.firstName }}</td>
-        <td>{{ customer.lastName }}</td>
-        <td>{{ customer.companyName }}</td>
-      </tr>
-    </table>
-  </div>
-  
+<div class="col-lg-12">
+  <table class="table table-hover table-striped border mt-4">
+     <thead>
+     <tr>
+        <th class="text-center" style="width: 50px">#</th>
+        <th>Müşteri</th>
+        <th>E-Posta</th>
+        <th>Şirket</th>
+        <th>F.P</th>
+     </tr>
+     </thead>
+     <tbody>
+     <tr *ngFor="let customer of customers">
+        <th class="text-center">{{ customer.id }}</th>
+        <td>{{ customer.firstName }} {{ customer.lastName }}</td>
+        <td>{{ customer.email }}</td>
+        <td *ngIf="customer.companyName">{{ customer.companyName }}</td>
+        <td *ngIf="!customer.companyName" class="text-muted">Şirket bilgisi yok</td>
+        <td>{{ customer.findexPoint }}</td>
+     </tr>
+     </tbody>
+  </table>
+</div>

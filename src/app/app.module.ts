@@ -1,29 +1,35 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
-import {FormsModule} from '@angular/forms'
+import {FormsModule,ReactiveFormsModule} from '@angular/forms'
+import { DatePipe } from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
-import { ReactiveFormsModule } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { ColorComponent } from './components/color/color.component';
 import { CarComponent } from './components/car/car.component';
-import { CarImageComponent } from './components/car-image/car-image.component';
+import { CarImageComponent } from './components/car/car-image/car-image.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { UserComponent } from './components/user/user.component';
 import { NaviComponent } from './components/navi/navi.component';
-import { CarDetailsComponent } from './components/car-details/car-details.component';
-import { CarFilterComponent } from './components/car-filter/car-filter.component';
+import { CarDetailsComponent } from './components/car/car-details/car-details.component';
+import { CarFilterComponent } from './components/car/car-filter/car-filter.component';
 import { FilterBrandPipe } from './pipes/filter-brand.pipe';
 import { FilterColorPipe } from './pipes/filter-color.pipe';
 
 import {ToastrModule} from 'ngx-toastr';
-import { PaymentComponent } from './components/payment/payment.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/auth/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { CardComponent } from './components/card/card/card.component';
+import { CardSavedComponent } from './components/card/card/card-saved/card-saved/card-saved.component';
+import { AuthMenuComponent } from './components/navi/auth-menu/auth-menu.component';
+import { CarRentComponent } from './components/car/car-rent/car-rent.component';
+import { RegisterComponent } from './components/auth/register/register.component';
+import { ProfileComponent } from './components/auth/profile/profile.component';
 
 
 @NgModule({
@@ -41,8 +47,14 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     CarFilterComponent,
     FilterBrandPipe,
     FilterColorPipe,
-    PaymentComponent,
     LoginComponent,
+    CardComponent,
+    CardSavedComponent,
+    AuthMenuComponent,
+    RegisterComponent,
+    ProfileComponent,
+    CarRentComponent,
+    CardSavedComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +68,9 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     })
   ],
   providers: [
+    DatePipe,
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+    // { provide: HTTP_INTERCEPTORS, useClass: ExpirationInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

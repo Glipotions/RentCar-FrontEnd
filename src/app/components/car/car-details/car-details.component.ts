@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CarDetails } from 'src/app/models/carDetails';
 import { CarImage } from 'src/app/models/carImage';
+import { Rental } from 'src/app/models/rental';
 import { RentalDetail } from 'src/app/models/rentalDetails';
 import { CarDetailsService } from 'src/app/service/car-details.service';
 import { CarImageService } from 'src/app/service/car-image.service';
@@ -14,11 +15,15 @@ import { RentalService } from 'src/app/service/rental.service';
 })
 export class CarDetailsComponent implements OnInit {
   carImages: CarImage[] = [];
-  cars: CarDetails;
+  car: CarDetails[]=[];
   dataLoaded = false;
   carDetails:CarDetails;
-  rentalsByCarId:RentalDetail[];
-  rentals:RentalDetail[];
+  rentalsByCarId:Rental[];
+  rentals:Rental[];
+
+  carDetailsLoad=false;
+  rentalControl = false;
+  rentalMessage="";
   // apiUrl : string = "https://localhost:44383";
   
   constructor( private carDetailService:CarDetailsService,
@@ -37,11 +42,20 @@ export class CarDetailsComponent implements OnInit {
       this.getRentals()
   })
   }
-  getCarsById(id:number){
-    this.carDetailService.getCarDetailById(id).subscribe(response=>{
-      this.carDetails=response.data[0];
-    })
+  // getCarsById(id:number){
+  //   this.carDetailService.getCarDetailById(id).subscribe(response=>{
+  //     this.carDetails=response.data[0];
+  //   })
+  // }
+
+  getCarsById(id:number) {
+    this.carDetailService.getCarDetailById(id).subscribe((response) => {
+      this.carDetails = response.data[0];   
+      this.carDetailsLoad=response.success;   
+    });
   }
+
+
   getImagesById(id:number){
     this.carImagesService.getCarImagesById(id).subscribe(response=>{
       this.carImages=response.data;
@@ -60,6 +74,13 @@ export class CarDetailsComponent implements OnInit {
     } else {
       return "carousel-item";
     }
+  }
+
+  getCarRentalControl(id:number) {
+    this.rentalService.getRentalsByCarId(id).subscribe((response) => { 
+      this.rentalControl=response.success;
+      this.rentalMessage=response.message; 
+    });
   }
 }
 

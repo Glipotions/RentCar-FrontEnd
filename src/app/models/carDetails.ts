@@ -8,4 +8,5 @@ export class CarDetails{
     description:string;
     imagePath:string;
     status:boolean;
+    findexPoing:number;
 }

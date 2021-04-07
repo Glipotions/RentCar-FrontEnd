@@ -5,4 +5,7 @@ export class CustomerDetails{
     lastName:string;
     email:string;
     companyName:string;
+
+    password:string;
+    findexPoint: number
 }
