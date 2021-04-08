@@ -47,3 +47,11 @@
       *ngFor="let brand of brands | filterBrand:filterBrandText" 
       [class]="getCurrentBrandClass(brand)">{{brand.brandName |uppercase}}</li>  
   </ul>
+  <br>
+  <button
+routerLink="/brands/add"
+type="button"
+class="btn btn-warning"
+>
+Marka Ekle
+</button>

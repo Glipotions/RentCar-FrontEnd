@@ -1,12 +1,16 @@
-export class CarDetails{
+import { Car } from "./car";
+
+export class CarDetails implements Car{
     id: number;
     carName: string;
+    brandId: number;
+    colorId: number;
+    modelYear: number;
+    dailyPrice: number;
+    description: string;
     brandName: string;
     colorName: string;
-    dailyPrice: number;
-    modelYear: number;
-    description:string;
     imagePath:string;
     status:boolean;
-    findexPoing:number;
+    findexPoint:number;
 }

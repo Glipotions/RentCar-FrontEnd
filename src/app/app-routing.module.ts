@@ -10,16 +10,13 @@ import { RentalComponent } from './components/rental/rental.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ProfileComponent } from './components/auth/profile/profile.component';
 import { CardComponent } from './components/card/card/card.component';
+import { CarAddComponent } from './components/car/car-add/car-add.component';
+import { CarUpdateComponent } from './components/car/car-update/car-update.component';
+import { BrandAddComponent } from './components/brand/brand-add/brand-add.component';
+import { BrandUpdateComponent } from './components/brand/brand-update/brand-update.component';
+import { ColorAddComponent } from './components/color/color-add/color-add.component';
 
 const routes: Routes = [
-  // { path: 'rentals', component: RentalComponent },
-  // { path: 'customers', component: CustomerComponent },
-  // { path: 'cars', component: CarComponent },
-
-  // { path: 'cars/filter/:brandId/:colorId', component: CarComponent },
-  // { path: 'cars/rental/:id', component: RentalComponent },
-  // { path: 'brands', component: BrandComponent },
-  // { path: 'colors', component: ColorComponent },
 
   { path: 'rentals', component: RentalComponent },
   { path: 'customers', component: CustomerComponent },
@@ -28,8 +25,8 @@ const routes: Routes = [
   {
      path: 'cars', children: [
         { path: '', component: CarComponent },
-        // { path: 'add', component: CarAddComponent },
-        // { path: 'update/:carId', component: CarUpdateComponent },
+        { path: 'add', component: CarAddComponent },
+        { path: 'update/:carId', component: CarUpdateComponent },
         { path: 'filter/:brandId/:colorId', component: CarComponent },
         { path: 'brand/:brandId', component: CarComponent },
         { path: 'color/:colorId', component: CarComponent },
@@ -39,15 +36,15 @@ const routes: Routes = [
   {
      path: 'brands', children: [
         { path: '', component: BrandComponent },
-        // { path: 'add', component: BrandAddComponent },
-        // { path: 'update/:brandId', component: BrandUpdateComponent }
+        { path: 'add', component: BrandAddComponent },
+        { path: 'update/:brandId', component: BrandUpdateComponent }
      ]
   },
   {
      path: 'colors', children: [
         { path: '', component: ColorComponent },
-        // { path: 'add', component: ColorAddComponent },
-        // { path: 'update/:colorId', component: ColorUpdateComponent }
+        { path: 'add', component: ColorAddComponent },
+        { path: 'update/:colorId', component: CarUpdateComponent }
      ]
   },
   {

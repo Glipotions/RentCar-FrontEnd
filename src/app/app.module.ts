@@ -30,6 +30,11 @@ import { AuthMenuComponent } from './components/navi/auth-menu/auth-menu.compone
 import { CarRentComponent } from './components/car/car-rent/car-rent.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ProfileComponent } from './components/auth/profile/profile.component';
+import { BrandAddComponent } from './components/brand/brand-add/brand-add.component';
+import { CarAddComponent } from './components/car/car-add/car-add.component';
+import { CarUpdateComponent } from './components/car/car-update/car-update.component';
+import { BrandUpdateComponent } from './components/brand/brand-update/brand-update.component';
+import { ColorAddComponent } from './components/color/color-add/color-add.component';
 
 
 @NgModule({
@@ -54,7 +59,12 @@ import { ProfileComponent } from './components/auth/profile/profile.component';
     RegisterComponent,
     ProfileComponent,
     CarRentComponent,
-    CardSavedComponent
+    CardSavedComponent,
+    BrandAddComponent,
+    CarAddComponent,
+    CarUpdateComponent,
+    BrandUpdateComponent,
+    ColorAddComponent
   ],
   imports: [
     BrowserModule,
